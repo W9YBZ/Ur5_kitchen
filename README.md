@@ -17,6 +17,11 @@ The start the Moveit control
 roslaunch ecnu_moveit_config demo.launch 
 ```
 
+To start the pick and place demo
+```
+python3 src/ur_robotiq_gazebo/scripts/FakeLLM.py 
+```
+
 ## Modification
 Do bring up the world environment only:
 ```
