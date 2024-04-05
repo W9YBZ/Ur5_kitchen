@@ -65,6 +65,16 @@ def reach_to(object: str):
         arm_group.go(wait=True)
         arm_group.stop()
         arm_group.clear_pose_targets()
+    elif object == "tap" :
+        arm_group = get_move_group("arm")
+        # Assuming this is the correct order after checking with get_active_joints()
+        joint_order = ["elbow_joint", "shoulder_lift_joint", "shoulder_pan_joint", "wrist_1_joint", "wrist_2_joint", "wrist_3_joint"]
+        joint_values =  [-0.7487615810718689, -2.2045681179700125, 1.003082393427321, -1.572984459381919, 1.4597296093935146, 0.037490048054029224]
+        joint_target = dict(zip(joint_order, joint_values))
+        arm_group.set_joint_value_target(joint_target)
+        arm_group.go(wait=True)
+        arm_group.stop()
+        arm_group.clear_pose_targets()
     else:
         raise NotImplementedError()
 
@@ -90,6 +100,19 @@ def move_to_grasp(object: str):
         arm_group.stop()
         arm_group.clear_pose_targets()
         """move the arm to align the gripper pose with an object, this should be used after reaching to a pregrasp pose."""
+    if object == "tap" :
+        arm_group = get_move_group("arm")
+        # Assuming this is the correct order after checking with get_active_joints()
+        joint_order = ["elbow_joint", "shoulder_lift_joint", "shoulder_pan_joint", "wrist_1_joint", "wrist_2_joint", "wrist_3_joint"]
+        joint_values = [-0.6696006448818839, -2.5573944057974742, 0.9680543558619101, -1.431790580100273, 1.5650859015163228, 0.03944635244090389]
+
+        joint_target = dict(zip(joint_order, joint_values))
+        arm_group.set_joint_value_target(joint_target)
+        arm_group.go(wait=True)
+        arm_group.stop()
+        arm_group.clear_pose_targets()
+        """move the arm to align the gripper pose with an object, this should be used after reaching to a pregrasp pose."""
+    
     else:
         raise NotImplementedError()
 
@@ -119,6 +142,15 @@ def close_gripper():
     req.link_name_2 = "wrist_3_link"
     attach_srv.call(req)
 
+def close_gripper_2():
+    gripper_group = get_move_group("gripper")
+    # Assuming 'finger_joint' is the correct name within your configuration
+    finger_joint_name = "finger_joint"
+    finger_joint_position = 0.5  # Target position for half-close
+    
+    # Set the target position for the finger_joint
+    gripper_group.set_joint_value_target({finger_joint_name: finger_joint_position})
+    gripper_group.go(wait=True)
 
 def open_gripper():
     req = AttachRequest()
@@ -137,6 +169,17 @@ def open_gripper():
 
 
 def switch_on_tap():
+    arm_group = get_move_group("arm")
+    # Assuming this is the correct order after checking with get_active_joints()
+    joint_order = ["elbow_joint", "shoulder_lift_joint", "shoulder_pan_joint", "wrist_1_joint", "wrist_2_joint", "wrist_3_joint"]
+    joint_values = [-0.6694274820643074, -2.5573978853889177, 0.9679115740110165, -1.4313937179730445, 1.5642136475523918, 1.7066389044254135]
+
+    joint_target = dict(zip(joint_order, joint_values))
+    arm_group.set_joint_value_target(joint_target)
+    arm_group.go(wait=True)
+    arm_group.stop()
+    arm_group.clear_pose_targets()
+    
     """switch on the tap when arm is by the tap location."""
     raise NotImplementedError()
 
