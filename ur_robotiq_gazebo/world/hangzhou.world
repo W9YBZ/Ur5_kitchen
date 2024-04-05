@@ -236,7 +236,7 @@
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
-      <model name='unit_box'>
+      <model name='green_box_1'>
         <pose>-0.095 0.872659 0.777412 2.5e-05 0.000134 3.8e-05</pose>
         <scale>1 1 1</scale>
         <link name='link'>
@@ -246,7 +246,7 @@
           <wrench>0.036851 -0.037707 0.057874 0 -0 0</wrench>
         </link>
       </model>
-      <model name='unit_box_clone'>
+      <model name='red_box_1'>
         <pose>0.254034 0.807767 0.777364 9.3e-05 0.000137 3.6e-05</pose>
         <scale>1 1 1</scale>
         <link name='link'>
@@ -827,7 +827,7 @@
         <projection_type>perspective</projection_type>
       </camera>
     </gui>
-    <model name='unit_box'>
+    <model name='green_box_1'>
       <pose>0.365516 -1.89689 0.5 0 -0 0</pose>
       <link name='link'>
         <inertial>
@@ -870,7 +870,7 @@
           </geometry>
           <material>
             <script>
-              <name>Gazebo/Red</name>
+              <name>Gazebo/Green</name>
               <uri>file://media/materials/scripts/gazebo.material</uri>
             </script>
           </material>
@@ -880,7 +880,7 @@
         <kinematic>0</kinematic>
       </link>
     </model>
-    <model name='unit_box_clone'>
+    <model name='red_box_1'>
       <pose>1.12941 -0.110734 0.777265 4.1e-05 2.2e-05 7e-06</pose>
       <link name='link'>
         <inertial>
